@@ -6,7 +6,7 @@
 /*   By: tching <tching@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/17 12:02:51 by tching            #+#    #+#             */
-/*   Updated: 2026/01/18 18:36:17 by tching           ###   ########.fr       */
+/*   Updated: 2026/01/18 18:38:30 by tching           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ class WebServer
 		bool correctConfig() const;
 		bool continueServer(char *buffer);
 
-		void checkServes();
+		void checkServers();
 		void checkClients();
 };
 

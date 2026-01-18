@@ -1,0 +1,98 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Cookie.cpp                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tching <tching@student.42kl.edu.my>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/01/17 12:02:51 by tching            #+#    #+#             */
+/*   Updated: 2026/01/18 18:59:42 by tching           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "Cookie.hpp"
+
+Cookie::Cookie() {
+	_cookieSessionId = generateRandomString(6);
+	_firstAccessTime = std::time(NULL);
+	_cookieMaxAge = MAXAGE;
+	_lastEntry = _firstAccessTime;
+	_cookieHeader = setCookieHeader();
+}
+
+Cookie::~Cookie() {}
+
+std::string	Cookie::formatTime(std::time_t timeInSeconds) {
+	std::string	formattedTime;
+	char buffer[80];
+
+	std::strftime(buffer, sizeof(buffer), "%Y-%m-%d %H:%M:%S", std::localtime(&timeInSeconds));
+	formattedTime = buffer;
+	return (formattedTime);
+}
+
+std::string	Cookie::generateRandomString(int length) { //pseudo-random
+	
+	const char charset[] =
+		"0123456789"
+		"abcdefghijklmnopqrstuvwxyz"
+		"ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+	const int charsetSize = sizeof(charset) - 1;
+	std::string randomString;
+
+	for (int i = 0; i < length; ++i)
+		randomString += charset[rand() % charsetSize];
+	return randomString;
+}
+
+void	Cookie::checkCookieExpiry(const char *requestBuffer) {
+	
+	std::string receivedData(requestBuffer);
+	size_t idPos = receivedData.find("Sec-Fetch-Dest: document");
+
+	_cookieHeader = "";
+	if (idPos != std::string::npos)
+		generateTimeStamp();
+}
+
+void	Cookie::generateTimeStamp() {
+	std::time_t	currTime = std::time(NULL);
+	std::string	formattedTime = formatTime(currTime);
+
+	if (_loginHistory.empty())
+		_loginHistory.push_back("LOG IN => " + formattedTime);
+	else
+		_loginHistory.push_back(formattedTime);
+	_lastEntry = currTime;
+}
+
+std::string	Cookie::getCookieBody() const {
+	std::ostringstream	oss;
+
+	if (_loginHistory.empty())
+		return ("");
+	for (std::vector<std::string>::const_iterator it = _loginHistory.begin(); it != _loginHistory.end(); ++it) {
+		oss << "<div style=\"text-align:center;color:white;\">";
+		oss << *it;
+		oss << "</div>";
+	}
+	return (oss.str());
+}
+
+std::string	Cookie::getCookieHeader() const { return _cookieHeader; }
+
+std::string	Cookie::setCookieHeader() {
+	std::stringstream	maxAge;
+	maxAge << _cookieMaxAge;
+
+	_cookieHeader += "Set-Cookie: session_id=" + _cookieSessionId + "; Max-Age=" + maxAge.str();
+	_cookieHeader += "; Path=/; Secure; HttpOnly";
+	_cookieHeader += "\r\n";
+	return (_cookieHeader);
+}
+
+int	Cookie::getCookieMaxAge() const { return _cookieMaxAge; }
+
+std::string	Cookie::getCookieId() const { return _cookieSessionId; }
+
+int	Cookie::getFirstAccessTime() const { return _firstAccessTime; }

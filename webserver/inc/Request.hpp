@@ -6,7 +6,7 @@
 /*   By: tching <tching@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/17 12:02:51 by tching            #+#    #+#             */
-/*   Updated: 2026/01/18 18:34:20 by tching           ###   ########.fr       */
+/*   Updated: 2026/01/18 18:38:50 by tching           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ class Request
 		void	generateAutoIndex(std::string &uri);
 		void	buildHeader();
 		void	buildResponse();
-		std::string	dafaultFileCount();
+		std::string	defaultFileCount();
 		std::string getMethod() const;
 		std::string getExtension() const;
 		bool isDirectory(const std::string& path);
