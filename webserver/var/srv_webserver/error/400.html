@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>404 - Not Found</title>
+    <title>400 - Bad Request</title>
     <style>
         :root {
             --bg-color: #0d1117;
@@ -82,16 +82,16 @@
 </head>
 <body>
     <div class="container">
-        <p class="error-code">404</p>
-        <h1>Page Not Found</h1>
+        <p class="error-code">400</p>
+        <h1>Bad Request</h1>
         
         <div class="terminal">
-            $ webserv --check-path<br>
-            <span>[ERROR] Resource at requested URL does not exist.</span><br>
-            $ status: 404_NOT_FOUND
+            $ webserv --status<br>
+            <span>[ERROR] Invalid syntax in request header.</span><br>
+            $ _
         </div>
 
-        <p>The page you are looking for might have been removed, had its name changed, or is temporarily unavailable.</p>
+        <p>The server could not understand your request. This usually happens when the data sent is corrupted or malformed.</p>
         
         <a href="/" class="btn">Return to Safety</a>
     </div>

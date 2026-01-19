@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>404 - Not Found</title>
+    <title>401 - Unauthorized</title>
     <style>
         :root {
             --bg-color: #0d1117;
             --text-color: #c9d1d9;
             --accent-color: #58a6ff;
-            --error-color: #f85149;
+            --warning-color: #d29922; /* Amber/Yellow for authorization issues */
         }
 
         body {
@@ -33,7 +33,7 @@
             font-size: 6rem;
             font-weight: 800;
             margin: 0;
-            color: var(--error-color);
+            color: var(--warning-color);
             line-height: 1;
         }
 
@@ -60,7 +60,7 @@
             margin-bottom: 2rem;
         }
 
-        .terminal span { color: var(--error-color); }
+        .terminal span { color: var(--warning-color); }
 
         .btn {
             display: inline-block;
@@ -82,18 +82,18 @@
 </head>
 <body>
     <div class="container">
-        <p class="error-code">404</p>
-        <h1>Page Not Found</h1>
+        <p class="error-code">401</p>
+        <h1>Unauthorized</h1>
         
         <div class="terminal">
-            $ webserv --check-path<br>
-            <span>[ERROR] Resource at requested URL does not exist.</span><br>
-            $ status: 404_NOT_FOUND
+            $ webserv --access-check<br>
+            <span>[WARN] Credentials missing or session expired.</span><br>
+            $ auth status: REQUIRED
         </div>
 
-        <p>The page you are looking for might have been removed, had its name changed, or is temporarily unavailable.</p>
+        <p>This page is restricted. Please provide valid authentication credentials or check your session cookies to view this resource.</p>
         
-        <a href="/" class="btn">Return to Safety</a>
+        <a href="/" class="btn">Back to Login</a>
     </div>
 </body>
 </html>
