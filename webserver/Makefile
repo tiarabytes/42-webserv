@@ -16,7 +16,7 @@ INC_PATH	=./inc/
 SRC_PATH	=./src/
 OBJ_PATH	=./obj/
 
-CC			= c++ -fsanitize=address
+CC			= clang++ -fsanitize=address
 CFLAGS		= -Wall -Wextra -Werror -std=c++98
 
 RM			= rm -rf

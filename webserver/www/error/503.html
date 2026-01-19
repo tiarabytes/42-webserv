@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>503 - Service Unavailable</title>
+    <style>
+        :root {
+            --bg-color: #0d1117;
+            --text-color: #c9d1d9;
+            --accent-color: #58a6ff;
+            --error-color: #f85149;
+        }
+        body { background-color: var(--bg-color); color: var(--text-color); font-family: sans-serif; display: flex; align-items: center; justify-content: center; height: 100vh; margin: 0; }
+        .container { text-align: center; padding: 2rem; max-width: 500px; }
+        .error-code { font-size: 6rem; font-weight: 800; margin: 0; color: #dbab09; line-height: 1; }
+        .terminal { background: #161b22; border: 1px solid #30363d; border-radius: 6px; padding: 15px; font-family: monospace; text-align: left; margin-top: 2rem; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <p class="error-code">503</p>
+        <h1>Server Busy</h1>
+        <div class="terminal">
+            $ webserv --load-factor<br>
+            <span>[OVERLOAD] MAXCLIENTS limit reached.</span><br>
+            $ status: RETRY_LATER
+        </div>
+        <p>The server is currently unable to handle the request due to a temporary overloading. Please try again in a few moments.</p>
+    </div>
+</body>
+</html>
