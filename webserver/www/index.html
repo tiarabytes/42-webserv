@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>42 Webserv | Home</title>
+    <style>
+        :root {
+            --bg-color: #0d1117;
+            --card-bg: rgba(22, 27, 34, 0.8);
+            --text-main: #c9d1d9;
+            --text-dim: #8b949e;
+            --accent: #58a6ff;
+            --border: #30363d;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            /* Soft gradient to match your original blue tone but modernized */
+            background-image: radial-gradient(circle at top right, #096f9733, transparent),
+                              radial-gradient(circle at bottom left, #e7774822, transparent);
+            color: var(--text-main);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        .card {
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 3rem;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            max-width: 600px;
+            width: 90%;
+        }
+
+        h1 {
+            color: var(--accent);
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            letter-spacing: 2px;
+        }
+
+        h2 {
+            font-size: 1.1rem;
+            font-weight: 400;
+            color: var(--text-dim);
+            margin-bottom: 2rem;
+            text-transform: uppercase;
+        }
+
+        .team-photo {
+            border-radius: 50%;
+            border: 3px solid var(--border);
+            width: 180px;
+            height: 180px;
+            object-fit: cover;
+            margin-bottom: 2rem;
+            transition: transform 0.3s ease;
+        }
+
+        .team-photo:hover {
+            transform: scale(1.05);
+            border-color: var(--accent);
+        }
+
+        .author-box {
+            border-top: 1px solid var(--border);
+            padding-top: 1.5rem;
+        }
+
+        .author-box span {
+            display: block;
+            color: var(--text-dim);
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        a {
+            color: #e77748; /* Your original orange color */
+            text-decoration: none;
+            font-size: 1.5rem;
+            font-weight: bold;
+            transition: opacity 0.2s;
+        }
+
+        a:hover {
+            text-decoration: underline;
+            opacity: 0.8;
+        }
+
+        .badge {
+            background: #238636;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-top: 1rem;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <h1>WEBSERVER</h1>
+        <h2>42 Common Core Project</h2>
+
+        <img src="index_files/racoon.png" alt="Just Because" class="just-because">
+
+        <div class="author-box">
+            <span>Developed by</span>
+            <a href="https://profile-v3.intra.42.fr/users/tching">Tiara</a>
+            <a href="https://profile-v3.intra.42.fr/users/ayeap">Amber</a>
+        </div>
+
+        <div class="badge">HTTP/1.1 Compliant</div>
+    </div>
+
+</body>
+</html>
